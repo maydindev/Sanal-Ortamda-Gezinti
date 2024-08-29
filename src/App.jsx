@@ -14,6 +14,18 @@ export default function App() {
     generateMessage(userData)
   }
 
+  const handleClick = () => {
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      clickCoordinates: {
+        offsetX: window.clientX,
+        offsetY: window.clientY,
+      },
+      hasEntered: true,
+      entranceTime: new Date(),
+    }))
+  }
+
   /* Challenge
   
      Bu retro VR uygulamasının bir "enter" butonuna ihtiyacı var. Buton aşağıdaki gibi ayarlanmalıdır:
@@ -42,6 +54,7 @@ export default function App() {
       <button
         disabled={userData.hasEntered}
         className={userData.hasEntered ? 'activated' : 'unactivated'}
+        onClick={handleClick}
       >
         {userData.hasEntered ? 'Bağlanıyor...' : 'Enter'}
       </button>
