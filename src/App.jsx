@@ -14,12 +14,12 @@ export default function App() {
     generateMessage(userData)
   }
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     setUserData((prevUserData) => ({
       ...prevUserData,
       clickCoordinates: {
-        offsetX: window.clientX,
-        offsetY: window.clientY,
+        offsetX: event.clientX,
+        offsetY: event.clientY,
       },
       hasEntered: true,
       entranceTime: new Date(),
